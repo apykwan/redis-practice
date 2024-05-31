@@ -13,6 +13,10 @@ export const searchItems = async (term: string, size: number = 5) => {
   // Look at cleaned and make sure it is valid
   if (cleaned === '') return [];
 
+  // console.log('term => ', cleaned);
+  //  %chair%
+
+  // FT.SEARCH idx:items '(@name:(%chair%) => { $weight: 5.0 } | @description:(%chair%))'
   const query = `(@name:(${cleaned}) => { $weight: 5.0 }) | (@description:(${cleaned}))`;
 
   // Use the client to do an actual search
